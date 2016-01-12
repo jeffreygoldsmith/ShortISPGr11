@@ -20,3 +20,23 @@ var prevSeconds = seconds
 var binaryHours = String(hours, radix: 2)   //  decimal time in binary
 var binaryMinutes = String(minutes, radix: 2)
 var binarySeconds = String(seconds, radix: 2)
+
+//
+// Function to pad binary time number with zeros.
+//
+
+func pad(time: String, toSize: Int) -> String
+{
+    var padded = time
+    for(var i = padded.characters.count;i < toSize; i++)
+    {
+        padded = "0" + padded
+    }
+    return padded
+}
+
+binaryHours = pad(binaryHours, toSize: 4)   // Pad binary numbers with zeros
+binaryMinutes = pad(binaryMinutes, toSize: 6)
+binarySeconds = pad(binarySeconds, toSize: 6)
+
+
