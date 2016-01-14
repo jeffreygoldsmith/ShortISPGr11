@@ -42,11 +42,11 @@ binaryMinutes = pad(binaryMinutes, toSize: 6)
 binarySeconds = pad(binarySeconds, toSize: 6)
 
 // Create a new canvas
-let canvas = Canvas(width: 500, height: 500)
+let canvas = Canvas(width: 400, height: 400)
 
-canvas.drawText(message: "Hours: " + binaryHours, size: 35, x: 150, y: 400)
-canvas.drawText(message: "Minutes: " + binaryMinutes, size: 35, x: 150, y: 300)
-canvas.drawText(message: "Seconds: " + binarySeconds, size: 35, x: 150, y: 200)
+canvas.drawText(message: "Hours     :     " + binaryHours, size: 35, x: 40, y: 300)
+canvas.drawText(message: "Minutes  : " + binaryMinutes, size: 35, x: 40, y: 200)
+canvas.drawText(message: "Seconds : " + binarySeconds, size: 35, x: 40, y: 100)
 
 
 canvas
