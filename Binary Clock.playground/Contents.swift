@@ -1,12 +1,11 @@
 import Cocoa
 
-//
-//  Binary Clock.swift
-//
-//
-//  Created by Student on 2016-01-06.
-//
-//
+/*
+ * Name : Jeffrey Goldsmith
+ * Date : Sunday, January 17, 2016
+ * Teacher : Mr. Gordon
+ * Class : ICS3U
+ */
 
 import Cocoa
 
@@ -17,7 +16,6 @@ let components = calendar.components([ .Hour, .Minute, .Second], fromDate: date)
 let hours = components.hour
 let minutes = components.minute
 let seconds = components.second
-var prevSeconds = seconds
 
 var binaryHours = String(hours, radix: 2)   //  decimal time in binary
 var binaryMinutes = String(minutes, radix: 2)
@@ -37,16 +35,29 @@ func pad(time: String, toSize: Int) -> String
     return padded
 }
 
-binaryHours = pad(binaryHours, toSize: 4)   // Pad binary numbers with zeros
+binaryHours = pad(binaryHours, toSize: 5)   // Pad binary numbers with zeros
 binaryMinutes = pad(binaryMinutes, toSize: 6)
 binarySeconds = pad(binarySeconds, toSize: 6)
 
 // Create a new canvas
-let canvas = Canvas(width: 500, height: 500)
+let canvas = Canvas(width: 400, height: 400)
 
-canvas.drawText(message: "Hours: " + binaryHours, size: 35, x: 150, y: 400)
-canvas.drawText(message: "Minutes: " + binaryMinutes, size: 35, x: 150, y: 300)
-canvas.drawText(message: "Seconds: " + binarySeconds, size: 35, x: 150, y: 200)
+//
+// Draw background.
+//
+
+canvas.fillColor = Color(hue: 215, saturation: 30, brightness: 60, alpha: 100)
+canvas.drawRectangle(bottomRightX: 0, bottomRightY: 0, width: canvas.width, height: canvas.height)
+
+//
+// Display binary time.
+//
+
+canvas.textColor = Color(hue: 0, saturation: 0, brightness: 100, alpha: 100) // Colour text white
+
+canvas.drawText(message: "Hours    :   " + binaryHours, size: 35, x: 75, y: 300)
+canvas.drawText(message: "Minutes : " + binaryMinutes, size: 35, x: 75, y: 200)
+canvas.drawText(message: "Seconds: " + binarySeconds, size: 35, x: 75, y: 100)
 
 
 canvas
