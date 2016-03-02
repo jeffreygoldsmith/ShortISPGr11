@@ -17,50 +17,72 @@ let hours = components.hour
 let minutes = components.minute
 let seconds = components.second
 
-var binaryHours = String(hours, radix: 2)   //  decimal time in binary
-var binaryMinutes = String(minutes, radix: 2)
-var binarySeconds = String(seconds, radix: 2)
+let hourLength = 5
+let minuteLength = 6
+let secondLength = 6
 
-//
-// Function to pad binary time number with zeros.
-//
+var hourOuput = ""
+var minuteOutput = ""
+var secondOutput = ""
 
-func pad(time: String, toSize: Int) -> String
+func decode(length: Int, type: Int, var output: String) -> String
 {
-    var padded = time
-    for(var i = padded.characters.count;i < toSize; i++)
+    var input = type
+    
+    for (var i = 0; i < length; i++)
     {
-        padded = "0" + padded
+        let bit = input % 2
+        input /= 2
+        let bitString = String(bit)
+        output.insert(Character(bitString), atIndex: output.startIndex)
     }
-    return padded
+    
+    return output
 }
 
-binaryHours = pad(binaryHours, toSize: 5)   // Pad binary numbers with zeros
-binaryMinutes = pad(binaryMinutes, toSize: 6)
-binarySeconds = pad(binarySeconds, toSize: 6)
+decode(hourLength, type: hours, output: hourOuput)
+decode(minuteLength, type: minutes, output: minuteOutput)
+decode(secondLength, type: seconds, output: secondOutput)
 
-// Create a new canvas
-let canvas = Canvas(width: 400, height: 400)
 
+//// Create a new canvas
+//let canvas = Canvas(width: 400, height: 400)
 //
-// Draw background.
+////
+//// Draw background.
+////
 //
-
-canvas.fillColor = Color(hue: 215, saturation: 30, brightness: 60, alpha: 100)
-canvas.drawRectangle(bottomRightX: 0, bottomRightY: 0, width: canvas.width, height: canvas.height)
-
+//canvas.fillColor = Color(hue: 215, saturation: 30, brightness: 60, alpha: 100)
+//canvas.drawRectangle(bottomRightX: 0, bottomRightY: 0, width: canvas.width, height: canvas.height)
 //
-// Display binary time.
+////
+//// Display binary time.
+////
 //
+//canvas.textColor = Color(hue: 0, saturation: 0, brightness: 100, alpha: 100) // Colour text white
+//
+//canvas.drawText(message: "Hours    :   " + binaryHours, size: 35, x: 75, y: 300)
+//canvas.drawText(message: "Minutes : " + binaryMinutes, size: 35, x: 75, y: 200)
+//canvas.drawText(message: "Seconds: " + binarySeconds, size: 35, x: 75, y: 100)
 
-canvas.textColor = Color(hue: 0, saturation: 0, brightness: 100, alpha: 100) // Colour text white
-
-canvas.drawText(message: "Hours    :   " + binaryHours, size: 35, x: 75, y: 300)
-canvas.drawText(message: "Minutes : " + binaryMinutes, size: 35, x: 75, y: 200)
-canvas.drawText(message: "Seconds: " + binarySeconds, size: 35, x: 75, y: 100)
-
-
-canvas
+//canvas
+//
+//let test = "testout"
+//var number = 16
+//var reverseOutput = ""
+//
+//for (var i = 0; i < 6; i++)
+//{
+//    var bit = number % 2
+//    number /= 2
+//    output += String(bit)
+//}
+//
+//for index in output.characters.indices
+//{
+//    var iChar = output[index]
+//    reverseOutput.insert(iChar, atIndex: reverseOutput.startIndex)
+//}
 
 
 
